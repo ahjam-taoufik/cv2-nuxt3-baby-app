@@ -1,3 +1,30 @@
+<script setup lang="ts">
+
+enum Gender {
+  BOY = "Boy",
+  GIRL = 'Girl',
+  UNISEX = 'Unisex'
+}
+
+enum Popularity {
+  TRENDY = 'Trendy',
+  UNIQUE = 'Unique'
+}
+
+enum Lenght {
+  LONG = 'Long',
+  ALL = 'All',
+  SHORT = 'Short'
+}
+
+
+const options = reactive({
+  gender: Gender.GIRL,
+  popularity: Popularity.TRENDY,
+  lenght: Lenght.LONG
+});
+</script>
+
 <template>
   <!-- <NuxtWelcome /> -->
   <div class="container">
@@ -7,24 +34,42 @@
       <div class="container-option">
         <p>1) Choose a gender</p>
         <div class="option-button">
-          <button class="option option-left">Boy</button>
-          <button class="option">Unisex</button>
-          <button class="option option-right">Girl</button>
+
+          <button @click="options.gender = Gender.BOY" :class="options.gender == Gender.BOY && 'option-active'"
+            class="option option-left ">Boy
+          </button>
+          <button @click="options.gender = Gender.UNISEX" :class="options.gender == Gender.UNISEX && 'option-active'"
+            class="option">Unisex</button>
+          <button @click="options.gender = Gender.GIRL" :class="options.gender == Gender.GIRL && 'option-active'"
+            class="option option-right ">Girl</button>
+
         </div>
       </div>
       <div class="container-option">
         <p>2) Choose the name's popularity</p>
         <div class="option-button">
-          <button class="option option-left">Trendy</button>
-          <button class="option option-right">Unique</button>
+
+          <button @click="options.popularity = Popularity.TRENDY"
+            :class="options.popularity == Popularity.TRENDY && 'option-active'"
+            class="option option-left">Trendy</button>
+          <button @click="options.popularity = Popularity.UNIQUE"
+            :class="options.popularity == Popularity.UNIQUE && 'option-active'"
+            class="option option-right">Unique</button>
+
         </div>
       </div>
       <div class="container-option">
         <p>3) Choose name's lenght</p>
         <div class="option-button">
-          <button class="option option-left">Long</button>
-          <button class="option">All</button>
-          <button class="option option-right">Short</button>
+
+          <button @click="options.lenght = Lenght.LONG" :class="options.lenght == Lenght.LONG && 'option-active'"
+            class="option option-left">Long</button>
+          <button @click="options.lenght = Lenght.ALL" :class="options.lenght == Lenght.ALL && 'option-active'"
+            class="option">All</button>
+
+          <button @click="options.lenght = Lenght.SHORT" :class="options.lenght == Lenght.SHORT && 'option-active'"
+            class="option option-right">Short</button>
+
         </div>
       </div>
 
@@ -65,7 +110,7 @@ h1 {
 }
 
 .option:hover {
-  background-color: rgb(255, 81, 81)
+  background-color: rgb(255, 209, 209)
 }
 
 .option-left {
@@ -74,5 +119,10 @@ h1 {
 
 .option-right {
   border-radius: 0 1rem 1rem 0;
+}
+
+.option-active {
+  background-color: rgb(255, 81, 81);
+  color: whitesmoke
 }
 </style>
