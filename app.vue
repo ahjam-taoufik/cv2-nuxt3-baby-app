@@ -17,8 +17,13 @@ enum Lenght {
   SHORT = 'Short'
 }
 
+interface Options {
+  gender: Gender,
+  popularity: Popularity,
+  lenght: Lenght
+}
 
-const options = reactive({
+const options = reactive<Options>({
   gender: Gender.GIRL,
   popularity: Popularity.TRENDY,
   lenght: Lenght.LONG
