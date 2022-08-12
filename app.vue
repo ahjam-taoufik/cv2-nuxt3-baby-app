@@ -1,0 +1,78 @@
+<template>
+  <!-- <NuxtWelcome /> -->
+  <div class="container">
+    <h1>Baby Name Generator</h1>
+    <h2>Choose your options click the "Find Names" buttom below</h2>
+    <div class="container-options">
+      <div class="container-option">
+        <p>1) Choose a gender</p>
+        <div class="option-button">
+          <button class="option option-left">Boy</button>
+          <button class="option">Unisex</button>
+          <button class="option option-right">Girl</button>
+        </div>
+      </div>
+      <div class="container-option">
+        <p>2) Choose the name's popularity</p>
+        <div class="option-button">
+          <button class="option option-left">Trendy</button>
+          <button class="option option-right">Unique</button>
+        </div>
+      </div>
+      <div class="container-option">
+        <p>3) Choose name's lenght</p>
+        <div class="option-button">
+          <button class="option option-left">Long</button>
+          <button class="option">All</button>
+          <button class="option option-right">Short</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</template>
+
+<style scoped>
+h1 {
+  font-size: 50px;
+}
+
+.container {
+  /* background: rgb(255, 192, 192); */
+  color: rgb(14, 82, 119);
+  text-align: center;
+  margin: 0 auto;
+  max-width: 70%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container-options {
+  background-color: rgb(201, 235, 241);
+  color: rgb(44, 53, 58);
+  font-weight: bold;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.option {
+  width: 170px;
+  padding: 10px 0;
+  border: none;
+  outline: 2px solid red;
+  background-color: aliceblue;
+  font-weight: bold;
+  font-size: 17px;
+}
+
+.option:hover {
+  background-color: rgb(255, 81, 81)
+}
+
+.option-left {
+  border-radius: 1rem 0 0 1rem;
+}
+
+.option-right {
+  border-radius: 0 1rem 1rem 0;
+}
+</style>
