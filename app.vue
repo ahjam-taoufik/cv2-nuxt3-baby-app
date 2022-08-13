@@ -1,21 +1,5 @@
 <script setup lang="ts">
 import { Gender, Popularity, Length, names } from '@/data'
-// enum Gender {
-//   BOY = "Boy",
-//   GIRL = 'Girl',
-//   UNISEX = 'Unisex'
-// }
-
-// enum Popularity {
-//   TRENDY = 'Trendy',
-//   UNIQUE = 'Unique'
-// }
-
-// enum Lenght {
-//   LONG = 'Long',
-//   ALL = 'All',
-//   SHORT = 'Short'
-// }
 
 interface Options {
   gender: Gender,
@@ -42,6 +26,23 @@ const afficheOption = () => {
   optionsSelected.value = filterNames.map(name => name.name)
 }
 
+const optionArray = [
+  {
+    name: '1) Choose a gender',
+    category: 'gender',
+    buttons: [Gender.BOY, Gender.GIRL, Gender.UNISEX]
+  },
+  {
+    name: "2) Choose the name's popularity",
+    category: 'popularity',
+    buttons: [Popularity.TRENDY, Popularity.UNIQUE]
+  },
+  {
+    name: "3) Choose name's lenght",
+    category: 'lenght',
+    buttons: [Length.LONG, Length.ALL, Length.SHORT]
+  },
+]
 </script>
 
 <template>
@@ -50,21 +51,30 @@ const afficheOption = () => {
     <h1>Baby Name Generator</h1>
     <h2>Choose your options click the "Find Names" buttom below</h2>
     <div class="container-options">
-      <div class="container-option">
+
+      <Option v-for="option in optionArray" :key="option.name" :option="option" :options="options" />
+
+      <!-- <div class="container-option">
+
         <p>1) Choose a gender</p>
         <div class="option-button">
 
           <button @click="options.gender = Gender.BOY" :class="options.gender == Gender.BOY && 'option-active'"
             class="option option-left ">Boy
           </button>
+
           <button @click="options.gender = Gender.UNISEX" :class="options.gender == Gender.UNISEX && 'option-active'"
-            class="option">Unisex</button>
+            class="option">Unisex
+          </button>
+
           <button @click="options.gender = Gender.GIRL" :class="options.gender == Gender.GIRL && 'option-active'"
-            class="option option-right ">Girl</button>
+            class="option option-right ">Girl
+          </button>
 
         </div>
-      </div>
-      <div class="container-option">
+      </div> -->
+
+      <!-- <div class="container-option">
         <p>2) Choose the name's popularity</p>
         <div class="option-button">
 
@@ -76,8 +86,8 @@ const afficheOption = () => {
             class="option option-right">Unique</button>
 
         </div>
-      </div>
-      <div class="container-option">
+      </div> -->
+      <!-- <div class="container-option">
         <p>3) Choose name's lenght</p>
         <div class="option-button">
 
@@ -90,9 +100,11 @@ const afficheOption = () => {
             class="option option-right">Short</button>
 
         </div>
-      </div>
+      </div> -->
+
 
       <button @click="afficheOption" class="option option-select">select</button>
+
     </div>
 
     <div class="container-cards">
