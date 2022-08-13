@@ -73,7 +73,6 @@ const optionArray = [
 
         </div>
       </div> -->
-
       <!-- <div class="container-option">
         <p>2) Choose the name's popularity</p>
         <div class="option-button">
@@ -148,24 +147,6 @@ h1 {
   font-weight: bold;
   font-size: 17px;
   cursor: pointer;
-}
-
-/* 
-.option:hover {
-  background-color: rgb(255, 209, 209)
-} */
-
-.option-left {
-  border-radius: 1rem 0 0 1rem;
-}
-
-.option-right {
-  border-radius: 0 1rem 1rem 0;
-}
-
-.option-active {
-  background-color: rgb(255, 81, 81);
-  color: whitesmoke
 }
 
 .option-select {
