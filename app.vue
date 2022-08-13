@@ -94,7 +94,14 @@ const afficheOption = () => {
 
       <button @click="afficheOption" class="option option-select">select</button>
     </div>
-    {{ optionsSelected }}
+
+    <div class="container-cards">
+      <div class="card" v-for="name in optionsSelected" :key="name">
+        {{ name }}
+        <p>X</p>
+      </div>
+    </div>
+
   </div>
 </template>
 
@@ -156,5 +163,31 @@ h1 {
 
 .option-select:hover {
   background-color: rgb(248, 93, 93)
+}
+
+.container-cards {
+  /* background-color: rgb(241, 145, 145); */
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+.card {
+  background-color: rgb(87, 118, 253);
+  margin-left: 20px;
+  padding: 16px 40px;
+  color: white;
+  border-radius: 1rem;
+  margin-top: 1rem;
+  position: relative
+}
+
+.card p {
+  /* background-color: aqua; */
+  position: absolute;
+  top: -13px;
+  right: 11px;
+  font-weight: bold;
+  cursor: pointer;
 }
 </style>
