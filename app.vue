@@ -1,33 +1,50 @@
 <script setup lang="ts">
+import { Gender, Popularity, Length, names } from '@/data'
+// enum Gender {
+//   BOY = "Boy",
+//   GIRL = 'Girl',
+//   UNISEX = 'Unisex'
+// }
 
-enum Gender {
-  BOY = "Boy",
-  GIRL = 'Girl',
-  UNISEX = 'Unisex'
-}
+// enum Popularity {
+//   TRENDY = 'Trendy',
+//   UNIQUE = 'Unique'
+// }
 
-enum Popularity {
-  TRENDY = 'Trendy',
-  UNIQUE = 'Unique'
-}
-
-enum Lenght {
-  LONG = 'Long',
-  ALL = 'All',
-  SHORT = 'Short'
-}
+// enum Lenght {
+//   LONG = 'Long',
+//   ALL = 'All',
+//   SHORT = 'Short'
+// }
 
 interface Options {
   gender: Gender,
   popularity: Popularity,
-  lenght: Lenght
+  lenght: Length
 }
 
 const options = reactive<Options>({
   gender: Gender.GIRL,
   popularity: Popularity.TRENDY,
-  lenght: Lenght.LONG
+  lenght: Length.LONG
 });
+
+const optionsSelected = ref([])
+
+const afficheOption = () => {
+  optionsSelected.value = names.filter((name) => name.gender == options.gender)
+    .filter((name) => name.popularity == options.popularity)
+    .filter((name) => {
+      if (options.lenght == Length.LONG || options.lenght == Length.SHORT) {
+        return name.length == options.lenght
+      } else {
+        return true
+      }
+    })
+
+
+}
+
 </script>
 
 <template>
@@ -67,18 +84,20 @@ const options = reactive<Options>({
         <p>3) Choose name's lenght</p>
         <div class="option-button">
 
-          <button @click="options.lenght = Lenght.LONG" :class="options.lenght == Lenght.LONG && 'option-active'"
+          <button @click="options.lenght = Length.LONG" :class="options.lenght == Length.LONG && 'option-active'"
             class="option option-left">Long</button>
-          <button @click="options.lenght = Lenght.ALL" :class="options.lenght == Lenght.ALL && 'option-active'"
+          <button @click="options.lenght = Length.ALL" :class="options.lenght == Length.ALL && 'option-active'"
             class="option">All</button>
 
-          <button @click="options.lenght = Lenght.SHORT" :class="options.lenght == Lenght.SHORT && 'option-active'"
+          <button @click="options.lenght = Length.SHORT" :class="options.lenght == Length.SHORT && 'option-active'"
             class="option option-right">Short</button>
 
         </div>
       </div>
 
+      <button @click="afficheOption" class="option option-select">select</button>
     </div>
+    <pre>{{ optionsSelected }}</pre>
   </div>
 </template>
 
@@ -112,11 +131,13 @@ h1 {
   background-color: aliceblue;
   font-weight: bold;
   font-size: 17px;
+  cursor: pointer;
 }
 
+/* 
 .option:hover {
   background-color: rgb(255, 209, 209)
-}
+} */
 
 .option-left {
   border-radius: 1rem 0 0 1rem;
@@ -129,5 +150,14 @@ h1 {
 .option-active {
   background-color: rgb(255, 81, 81);
   color: whitesmoke
+}
+
+.option-select {
+  margin-top: 1rem;
+  border-radius: 1rem
+}
+
+.option-select:hover {
+  background-color: rgb(248, 93, 93)
 }
 </style>
