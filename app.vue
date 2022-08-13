@@ -15,6 +15,16 @@ const options = reactive<Options>({
 
 const optionsSelected = ref<string[]>([])
 
+const deleteName = (index: number) => {
+  // console.log(optionsSelected.value[index]);
+  const list = [...optionsSelected.value]
+  list.splice(index, 1)
+
+  optionsSelected.value = list
+
+}
+
+
 const afficheOption = () => {
   const filterNames = names.filter((name) => name.gender == options.gender)
     .filter((name) => name.popularity == options.popularity)
@@ -107,7 +117,8 @@ const optionArray = [
     </div>
 
     <div class="container-cards">
-      <CardName v-for="name in optionsSelected" :key="name" :name="name" />
+      <CardName v-for="(name, index) in optionsSelected" :key="name" :name="name" :index="index"
+        @deleteName="deleteName(index)" />
       <!-- <div class="card" v-for="name in optionsSelected" :key="name">
         {{ name }}
         <p>X</p>

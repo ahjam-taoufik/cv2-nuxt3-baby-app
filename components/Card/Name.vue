@@ -1,15 +1,24 @@
 <script setup lang="ts">
+
 interface NameProps {
-    name: string
+    name: string,
+    index: number
 }
 const props = defineProps<NameProps>()
+
+const emits = defineEmits(['deleteName'])
+
+function deleteName() {
+    emits('deleteName', props.index)
+}
+
 </script>
 
 
 <template>
     <div class="card">
         {{ name }}
-        <p>X</p>
+        <p @click="deleteName">X</p>
     </div>
 </template>
 
