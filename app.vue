@@ -35,13 +35,10 @@ const afficheOption = () => {
   optionsSelected.value = names.filter((name) => name.gender == options.gender)
     .filter((name) => name.popularity == options.popularity)
     .filter((name) => {
-      if (options.lenght == Length.LONG || options.lenght == Length.SHORT) {
-        return name.length == options.lenght
-      } else {
-        return true
-      }
-    })
+      if (options.lenght == Length.ALL) return true
+      else return name.length == options.lenght
 
+    })
 
 }
 
