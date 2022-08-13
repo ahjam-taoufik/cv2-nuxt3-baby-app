@@ -1,7 +1,21 @@
-<script setup >
-import { Gender } from '@/data';
+<script setup lang="ts">
+import { Gender, Length, Popularity } from '@/data';
 
-const props = defineProps(['option', 'options'])
+interface propsOptions {
+    option: {
+        name: string,
+        category: string,
+        buttons: Gender[] | Popularity[] | Length[]
+    },
+    options: {
+        gender: Gender
+        popularity: Popularity
+        lenght: Length
+    }
+}
+
+const props = defineProps<propsOptions>()
+// const props = defineProps(['option', 'options'])
 
 const ButtonCalssNames = (value, index) => {
     const ClassNames = []

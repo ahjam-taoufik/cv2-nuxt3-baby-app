@@ -24,7 +24,6 @@ const deleteName = (index: number) => {
 
 }
 
-
 const afficheOption = () => {
   const filterNames = names.filter((name) => name.gender == options.gender)
     .filter((name) => name.popularity == options.popularity)
