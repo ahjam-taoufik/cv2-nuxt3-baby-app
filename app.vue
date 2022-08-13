@@ -29,17 +29,17 @@ const options = reactive<Options>({
   lenght: Length.LONG
 });
 
-const optionsSelected = ref([])
+const optionsSelected = ref<string[]>([])
 
 const afficheOption = () => {
-  optionsSelected.value = names.filter((name) => name.gender == options.gender)
+  const filterNames = names.filter((name) => name.gender == options.gender)
     .filter((name) => name.popularity == options.popularity)
     .filter((name) => {
       if (options.lenght == Length.ALL) return true
       else return name.length == options.lenght
-
     })
 
+  optionsSelected.value = filterNames.map(name => name.name)
 }
 
 </script>
@@ -94,7 +94,7 @@ const afficheOption = () => {
 
       <button @click="afficheOption" class="option option-select">select</button>
     </div>
-    <pre>{{ optionsSelected }}</pre>
+    {{ optionsSelected }}
   </div>
 </template>
 
